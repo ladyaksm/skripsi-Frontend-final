@@ -20,11 +20,23 @@ export const uploadDocument = async (file, category) => {
 export const getDocuments = async () => {
   try {
     const response = await apiClient.get("/admin/list")
-    return { success: true, data: response.data }
+
+    const docs = response.data.documents || response.data
+    console.log("RAW RESPONSE:", response.data)
+    
+
+    return {
+      success: true,
+      data: response.data
+    }
   } catch (error) {
-    return { success: false, error: error.response?.data?.error || "Gagal mengambil dokumen" }
+    return {
+      success: false,
+      error: error.response?.data?.error || "Gagal mengambil dokumen"
+    }
   }
 }
+
 
 export const deleteDocument = async (docId) => {
   try {

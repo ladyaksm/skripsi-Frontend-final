@@ -53,6 +53,7 @@ export default function DocumentList() {
     .filter((doc) =>
       doc.name?.toLowerCase().includes(search.toLowerCase())
     )
+    
     .filter((doc) =>
       filterCategory ? doc.category === filterCategory : true
     );
